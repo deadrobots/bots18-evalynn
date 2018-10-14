@@ -12,7 +12,7 @@ def drive(lspeed, rspeed, time=2000):
 
 def waitForButton():
     ao()
-    print('Press the right button.')
+    print('Press right button.')
     while right_button() == 0:
         pass
     print('Button pressed.')
