@@ -3,6 +3,12 @@ import os
 import sys
 from wallaby import *
 
+# Good use of naming conventions for functions. Please use the same
+# naming conventions for variables. lmotor should by lMotor, etc. 
+# You have some constants defined, but you need to start using them.
+# replace the "hard-coded" port numbers with your constants, and 
+# define more constants for your sensor ports.
+# I like the chuckDaCan action :) -LMB
 
 lmotor = 3
 rmotor = 0
@@ -10,7 +16,7 @@ claw = 0
 arm = 3
 
 def drive(lspeed, rspeed, time=2000):
-    motor(3, lspeed)
+    motor(3, lspeed) # Don't forget to use constants here -LMB
     motor(0, rspeed)
     msleep(time)
 
@@ -23,7 +29,9 @@ def waitForButton():
     print('Button pressed.')
 
 def ChuckDaCan():
-    set_servo_position(0, 1400)
+	# please use constants for all servo ports, and if you aren't using a constant for the
+	# servo position value, then put a comment saying whether this moves the servo arm/claw up or down, or where... -LMB
+    set_servo_position(0, 1400) 
     set_servo_position(3, 900)
     drive(100, 99, 2500)
     # Closes servo claw on can
@@ -55,7 +63,7 @@ def straightLineFollow(timeSecs):
 def lineFollow(timeSecs):
     startTime = seconds()
     while (seconds() - startTime) < timeSecs:
-        if analog(0) > 1000:
+        if analog(0) > 1000: # Please also use constants for sensor ports, too! -LMB
             drive(100, 25, 50)
         else:
             drive(25, 100, 50)
