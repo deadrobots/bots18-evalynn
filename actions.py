@@ -5,29 +5,20 @@ from wallaby import *
 from constants import *
 from utilities import *
 from driving import *
-from actions import *
 
-
-def main():
-
-    enable_servos()
+def chuckDaCan():
+    # If you aren't using a constant for the servo position value, then put a comment saying whether this moves the
+    # servo arm/claw up or down, or where... -LMB
     set_servo_position(claw, 1400)
-    set_servo_position(arm, 700)
-    msleep(500)
-    # Line follows until near can
-    print(analog(ET))
-    while analog(ET) < 2850:
-        lineFollow(.1)
-        print(analog(ET))
-    waitForButton()
+    set_servo_position(arm, 900)
+    drive(100, 99, 2500)
     # Closes servo claw on can
-    drive(25, 25, 500)
     set_servo_position(claw, 160)
     msleep(1000)
     set_servo_position(arm, 2000)
-    waitForButton()
     # Victory spin!
     drive(-100, 100, 5200)
+    ao()
     waitForButton()
     # Chuck da can
     set_servo_position(claw, 170)
@@ -35,8 +26,3 @@ def main():
     set_servo_position(arm, 1400)
     msleep(200)
     set_servo_position(claw, 1400)
-
-
-if __name__ == "__main__":
-    sys.stdout = os.fdopen(sys.stdout.fileno(), "w", 0)
-    main()
