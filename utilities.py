@@ -1,7 +1,6 @@
 #!/usr/bin/python
-import os
-import sys
 from wallaby import *
+
 
 def waitForButton():
     ao()

@@ -1,6 +1,4 @@
 #!/usr/bin/python
-import os
-import sys
 from wallaby import *
 from constants import *
 from utilities import *

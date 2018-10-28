@@ -12,16 +12,17 @@ def main():
 
     enable_servos()
     set_servo_position(claw, 1400)
-    set_servo_position(arm, 700)
+    set_servo_position(arm, 900)
     msleep(500)
     # Line follows until near can
     print(analog(ET))
-    while analog(ET) < 2850:
+    while analog(ET) < 2800:
         lineFollow(.1)
         print(analog(ET))
+    print(analog(ET))
     waitForButton()
     # Closes servo claw on can
-    drive(25, 25, 500)
+    drive(25, 25, 1000)
     set_servo_position(claw, 160)
     msleep(1000)
     set_servo_position(arm, 2000)
