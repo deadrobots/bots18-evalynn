@@ -16,6 +16,8 @@ def chuckDaCan():
     set_servo_position(claw, 160)
     msleep(1000)
     set_servo_position(arm, 2000)
+	# Careful. There's no msleep() after this call to set_servo_position(). The servo will be trying
+	# to move while your wheels are driving. This can cause unexpected things to happen - LMB
     # Victory spin!
     drive(-100, 100, 5200)
     ao()
@@ -26,3 +28,4 @@ def chuckDaCan():
     set_servo_position(arm, 1400)
     msleep(200)
     set_servo_position(claw, 1400)
+	# Don't forget to add an msleep() call here. This last call to set_servo_position() may behave unexpectedly without it -LMB
