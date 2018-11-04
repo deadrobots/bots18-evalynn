@@ -7,6 +7,8 @@ from utilities import *
 from driving import *
 from actions import *
 
+# Good work separating things into multiple files.
+# Can't wait to see you start making camera code! - LMB
 
 def main():
 
