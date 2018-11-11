@@ -24,8 +24,8 @@ def lineFollow(timeSecs):
     startTime = seconds()
     while (seconds() - startTime) < timeSecs:
         if analog(topHat) > 1000:
-            motor(lMotor, 100)
-            motor(rMotor, 10)
+            motor(lMotor, 50)
+            motor(rMotor, 5)
         else:
-            motor(lMotor, 10)
-            motor(rMotor, 100)
+            motor(lMotor, 5)
+            motor(rMotor, 50)

@@ -7,8 +7,6 @@ from utilities import *
 from driving import *
 from actions import *
 
-# Good work separating things into multiple files.
-# Can't wait to see you start making camera code! - LMB
 
 def main():
 
@@ -18,14 +16,14 @@ def main():
     msleep(500)
     # Line follows until near can
     print(analog(ET))
-    while analog(ET) < 2800:
+    while analog(ET) < 2950:
         lineFollow(.1)
         print(analog(ET))
     print(analog(ET))
     waitForButton()
     # Closes servo claw on can
-    drive(25, 25, 1000)
-    set_servo_position(claw, 160)
+    drive(25, 25, 2500)
+    set_servo_position(claw, 60)
     msleep(1000)
     set_servo_position(arm, 2000)
     waitForButton()
