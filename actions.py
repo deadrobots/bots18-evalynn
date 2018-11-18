@@ -5,6 +5,35 @@ from utilities import *
 from driving import *
 
 
+def squigglyLineFollowGrabCan():
+    enable_servos()
+    set_servo_position(claw, 1400)
+    set_servo_position(arm, 900)
+    msleep(500)
+    # Line follows until near can
+    print(analog(ET))
+    while analog(ET) < 2950:
+        lineFollow(.1)
+        print(analog(ET))
+    print(analog(ET))
+    waitForButton()
+    # Closes servo claw on can
+    drive(25, 25, 2500)
+    set_servo_position(claw, 60)
+    msleep(1000)
+    set_servo_position(arm, 2000)
+    waitForButton()
+    # Victory spin!
+    drive(-100, 100, 5200)
+    waitForButton()
+    # Chuck da can
+    set_servo_position(claw, 170)
+    msleep(500)
+    set_servo_position(arm, 1400)
+    msleep(200)
+    set_servo_position(claw, 1400)
+
+
 def chuckDaCan():
     # If you aren't using a constant for the servo position value, then put a comment saying whether this moves the
     # servo arm/claw up or down, or where... -LMB

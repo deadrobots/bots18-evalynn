@@ -10,6 +10,11 @@ def drive(lSpeed, rSpeed, time=2000):
     msleep(time)
 
 
+def driveUntimed(lSpeed, rSpeed):
+    motor(lMotor, lSpeed)
+    motor(rMotor, rSpeed)
+
+
 # Line follow but does not work well on curved lines
 def straightLineFollow(timeSecs):
     startTime = seconds()
