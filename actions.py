@@ -3,6 +3,7 @@ from wallaby import *
 from constants import *
 from utilities import *
 from driving import *
+import random as r
 
 
 def squigglyLineFollowGrabCan():
@@ -58,3 +59,18 @@ def chuckDaCan():
     set_servo_position(claw, 1400)
     # Don't forget to add a sleep call here. This last call to set_servo_position() may behave unexpectedly without
     # it -LMB
+
+
+def zuZuBot():
+    while True:
+        ay = 0
+        n = r.randint(500, 2001)
+        driveUntimed(100, 100)
+        while ay < 250:
+            ay = abs(accel_y())
+            print(ay)
+            msleep(50)
+        drive(-50, -50, 1500)
+        drive(0, 100, n)
+        ao()
+        msleep(1000)
