@@ -87,3 +87,35 @@ def zuZuBot():
         drive(0, 100, n)
         ao()
         msleep(1000)
+
+
+def turnUntilSeeOrange():
+        while True:
+            drive(0, 25, 125)
+            camera_update()
+            blobs = get_object_count(0)
+            if blobs > 0:
+                break
+        ao()
+        print("I see an orange blob!")
+
+
+def faceOrange():
+    while True:
+        msleep(500)
+        camera_update()
+        x = get_object_center_x(0, 0)
+        print(x)
+        if x == -1:
+            print('Oh no! I can\'t see the ball anymore.')
+            waitForButton()
+
+        elif x < 70:
+            print('Ball to left.')
+            drive(0, 25, 50)
+        elif x > 90:
+            print('Ball to right.')
+            drive(25, 0, 50)
+        else:
+            print('Ball straight ahead!')
+            break

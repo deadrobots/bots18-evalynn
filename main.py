@@ -9,11 +9,9 @@ from actions import *
 
 
 def main():
-    while True:
-        driveUntimed(100, 0)
-        ay = abs(accel_y())
-        print(ay)
-        msleep(50)
+    init()
+    turnUntilSeeOrange()
+    faceOrange()
 
 
 if __name__ == "__main__":
