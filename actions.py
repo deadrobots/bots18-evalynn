@@ -60,7 +60,20 @@ def chuckDaCan():
     # Don't forget to add a sleep call here. This last call to set_servo_position() may behave unexpectedly without
     # it -LMB
 
-
+"""
+Your code is very concise here. Well done. It doesn't have to be super complicated to make
+a cool robot. 
+A challenge for you, if you're up for it: remove the msleep() from inside your loop, and check
+the gyrometer more frequently. Then make an average of the last five gyro readings, so that your
+robot will be less sensitive to small bumps, and only sensitive to large bumps. (This has a 
+different effect than simply changing the gyro threshold). 
+To do this, use lists:
+myGyroList = [] # new list
+myGyroList.append(gyro_y()) # adds a number to the "top" your list
+myGyroList.pop(0) # removes the oldest value, aka the number on the "bottom" of the list
+then use a for: loop to take the average over all five list values.
+-LMB
+"""
 def zuZuBot():
     while True:
         ay = 0
