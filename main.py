@@ -10,8 +10,10 @@ from actions import *
 
 def main():
     init()
-    turnUntilSeeOrange()
-    faceOrange()
+    while True:
+        turnUntilSeeOrange()
+        waitForButton()
+        goToOrange()
 
 
 if __name__ == "__main__":

@@ -60,6 +60,7 @@ def chuckDaCan():
     # Don't forget to add a sleep call here. This last call to set_servo_position() may behave unexpectedly without
     # it -LMB
 
+
 """
 Your code is very concise here. Well done. It doesn't have to be super complicated to make
 a cool robot. 
@@ -74,6 +75,8 @@ myGyroList.pop(0) # removes the oldest value, aka the number on the "bottom" of 
 then use a for: loop to take the average over all five list values.
 -LMB
 """
+
+
 def zuZuBot():
     while True:
         ay = 0
@@ -93,8 +96,11 @@ def turnUntilSeeOrange():
         while True:
             drive(0, 25, 125)
             camera_update()
-            blobs = get_object_count(0)
-            if blobs > 0:
+            numBlobs = get_object_count(0)
+            blobSize = get_object_area(0, 0)
+            if numBlobs > 0 and blobSize > 100:
+                blobSize = str(blobSize)
+                print('Orange blob area = '+blobSize+'.')
                 break
         ao()
         print("I see an orange blob!")
@@ -119,3 +125,21 @@ def faceOrange():
         else:
             print('Ball straight ahead!')
             break
+
+
+def goToOrange():
+    while True:
+        msleep(500)
+        camera_update()
+        y = get_object_center_y(0, 0)
+        print(y)
+        if y == -1:
+            print('I can\'t see the ball anymore. Is that okay?')
+            waitForButton()
+            break
+        elif y < 25:
+            drive(100, 100, 1000)
+            break
+        else:
+            print('Ball still ahead!')
+            drive(100, 100, 100)
