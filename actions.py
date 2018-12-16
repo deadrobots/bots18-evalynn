@@ -98,17 +98,25 @@ def turnUntilSeeOrange():
             camera_update()
             numBlobs = get_object_count(0)
             blobSize = get_object_area(0, 0)
+			"""
+			blobSize used to be an integer (a number) but now it is cast to a string using the str()
+			function. This is dangerous because it is going back and forth between two different types
+			of varibles. Use a separate variable for the string version. like blobSizeStr = str(blobSize)
+			-LMB
+			"""
             if numBlobs > 0 and blobSize > 100:
-                blobSize = str(blobSize)
+                blobSize = str(blobSize)					
                 print('Orange blob area = '+blobSize+'.')
-                break
+                break	# Careful not to overuse "break". You can take this "if" statement and put its 
+						# condition into the while loop (instead of using "while True") and get the 
+						# same effect -LMB
         ao()
         print("I see an orange blob!")
 
 
 def faceOrange():
     while True:
-        msleep(500)
+        msleep(500) # You don't have to sleep this long. 200ms is more than enough for the camera, FYI -LMB
         camera_update()
         x = get_object_center_x(0, 0)
         print(x)
