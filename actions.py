@@ -62,17 +62,14 @@ def chuckDaCan():
 
 
 """
-Your code is very concise here. Well done. It doesn't have to be super complicated to make
-a cool robot. 
-A challenge for you, if you're up for it: remove the msleep() from inside your loop, and check
-the gyrometer more frequently. Then make an average of the last five gyro readings, so that your
-robot will be less sensitive to small bumps, and only sensitive to large bumps. (This has a 
-different effect than simply changing the gyro threshold). 
+Challenge: remove the msleep() from inside your loop, and check the gyrometer more frequently. Then make an average of 
+the last five gyro readings, so that your robot will be less sensitive to small bumps, and only sensitive to large 
+bumps. (This has a different effect than simply changing the gyro threshold). 
 To do this, use lists:
 myGyroList = [] # new list
 myGyroList.append(gyro_y()) # adds a number to the "top" your list
-myGyroList.pop(0) # removes the oldest value, aka the number on the "bottom" of the list
-then use a for: loop to take the average over all five list values.
+myGyroList.pop(0) # removes the oldest value, aka the number on the "bottom" of the list then use a for: loop to take 
+the average over all five list values.
 -LMB
 """
 
@@ -98,32 +95,26 @@ def turnUntilSeeOrange():
             camera_update()
             numBlobs = get_object_count(0)
             blobSize = get_object_area(0, 0)
-			"""
-			blobSize used to be an integer (a number) but now it is cast to a string using the str()
-			function. This is dangerous because it is going back and forth between two different types
-			of varibles. Use a separate variable for the string version. like blobSizeStr = str(blobSize)
-			-LMB
-			"""
+
             if numBlobs > 0 and blobSize > 100:
-                blobSize = str(blobSize)					
-                print('Orange blob area = '+blobSize+'.')
-                break	# Careful not to overuse "break". You can take this "if" statement and put its 
-						# condition into the while loop (instead of using "while True") and get the 
-						# same effect -LMB
+                blobSizeStr = str(blobSize)
+                print('Orange blob area = '+blobSizeStr+'.')
+                break
+                # Careful not to overuse "break". You can take this "if" statement and put its condition into the while
+                # loop (instead of using "while True") and get the same effect -LMB
         ao()
         print("I see an orange blob!")
 
 
 def faceOrange():
     while True:
-        msleep(500) # You don't have to sleep this long. 200ms is more than enough for the camera, FYI -LMB
+        msleep(250)
         camera_update()
         x = get_object_center_x(0, 0)
         print(x)
         if x == -1:
             print('Oh no! I can\'t see the ball anymore.')
             waitForButton()
-
         elif x < 70:
             print('Ball to left.')
             drive(0, 25, 50)
@@ -146,8 +137,8 @@ def goToOrange():
             waitForButton()
             break
         elif y < 25:
-            drive(100, 100, 1000)
+            drive(97, 100, 1000)
             break
         else:
             print('Ball still ahead!')
-            drive(100, 100, 100)
+            drive(97, 100, 100)

@@ -4,7 +4,7 @@ from constants import *
 from utilities import *
 
 
-def drive(lSpeed, rSpeed, time=2000):
+def drive(lSpeed, rSpeed, time=2000):  # Straight Value = (97, 100)
     motor(lMotor, lSpeed)
     motor(rMotor, rSpeed)
     msleep(time)
@@ -13,6 +13,16 @@ def drive(lSpeed, rSpeed, time=2000):
 def driveUntimed(lSpeed, rSpeed):
     motor(lMotor, lSpeed)
     motor(rMotor, rSpeed)
+
+
+def driveFreeze(lSpeed, rSpeed, time=2000):
+    motor(lMotor, lSpeed)
+    motor(rMotor, rSpeed)
+    msleep(time)
+    ao()
+    freeze(lMotor)
+    freeze(rMotor)
+    msleep(500)
 
 
 # Line follow but does not work well on curved lines
